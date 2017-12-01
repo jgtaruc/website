@@ -26,7 +26,7 @@ gulp.task('build_html', function () {
 
 // build css from scss
 gulp.task('build_scss', function(){
-    gulp.src("./src/scss/**/.*.scss")
+    gulp.src("./src/scss/**/*.scss")
         .pipe(gulp_cached('cached-scss'))
         .pipe(gulp_sourcemaps.init())
         .pipe(scss({ includePaths: ['./node_modules'] }).on('error', scss.logError))
