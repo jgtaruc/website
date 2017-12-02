@@ -21,7 +21,7 @@ var gulp = require('gulp'),
 gulp.task('build_html', function () {
     gulp.src('./src/html/**/*.html')
         .pipe(gulp_cached('cached-html'))
-        .pipe(gulp.dest('./dist/html'));
+        .pipe(gulp.dest('./dist'));
 });
 
 // build css from scss
@@ -72,7 +72,7 @@ gulp.task('build_templates', function() {
         }))
         .pipe(gulp_concat('templates.js'))
         .pipe(js_uglify())
-        .pipe(gulp.dest('./dist/html/templates'))
+        .pipe(gulp.dest('./dist/js/templates'))
         .pipe(gulp_cached('cached-templates'));
 });
     
