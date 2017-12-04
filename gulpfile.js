@@ -64,7 +64,10 @@ gulp.task('build_assets', function () {
 gulp.task('build_templates', function() {
     gulp.src('./src/html/**/*.hbs')
         .pipe(js_plumber())
-        .pipe(html_templating())
+        .pipe(html_templating({
+                handlebars: require('handlebars')
+            })
+        )
         .pipe(gulp_wrap('Handlebars.template(<%= contents %>)'))
         .pipe(gulp_declare({
             namespace: 'Templates',
@@ -85,7 +88,7 @@ gulp.task('import_vendors', function () {
         .pipe(gulp.dest('./dist/js/vendors'));
     
     gulp.src('./node_modules/babel-polyfill/dist/polyfill.min.js')
-        .pipe(rename({
+        .pipe(gulp_rename({
             basename: "babel-polyfill.min"
         }))
         .pipe(gulp.dest('./dist/js/vendors'));
@@ -100,4 +103,4 @@ gulp.task('watch', function () {
     gulp.watch('./src/html/**/*.hbs', ['build_templates']);
 });
     
-gulp.task('build', ['build_html','build_scss', 'build_js', 'build_assets', "build_templates"]);
+gulp.task('build', ['build_html','build_scss', 'build_js', 'build_assets', 'build_templates', 'import_vendors']);

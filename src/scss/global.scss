@@ -1,0 +1,45 @@
+$theme-color: #1f2527;
+$color-on-background: rgba(255, 255, 255, 0.85);
+
+html {
+    font-family: 'Roboto', sans-serif;
+    font-weight: 400;
+}
+
+.jg-main {
+    min-height: 100vh;
+}
+
+#jg-footer {
+
+    .jg-grid-layout {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 70vw;
+    }
+    //testing
+    background-color: $theme-color;
+    color: $color-on-background;
+    height: 200px;
+    width: 100%;
+}
+
+
+
+// grid system
+.jg-grid-layout {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+@mixin flex-grid-generate($denominator, $extension: '') {
+    @for $numerator from 1 through $denominator {
+        .jg-grid-#{$numerator}\/#{$denominator}#{$extension} {
+            display: flex;
+            flex: 1 1 ($numerator / $denominator * 100%);
+        }
+    }
+}
+@for $i from 1 through 12 {
+    @include flex-grid-generate($i);
+}

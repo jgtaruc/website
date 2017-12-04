@@ -2,15 +2,28 @@
 <html>
     <head>
         <title>Juan Gabriel Taruc | Software Developer</title>
+        <script src="js/vendors/handlebars.runtime.min.js"></script>        
+        <script src="js/templates/templates.js"></script>
+        
         
         <script>
             document.write(Templates.template_meta());
         </script>
-        
+
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/global.css">
+        <link rel="stylesheet" type="text/css" href="css/header.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,600">
     </head>
 
     <body>
-        <main>
+        <script>
+            document.write(Templates.template_svg({
+                svg_menu: true
+            }));
+        </script>
+
+        <main class="jg-main">
             <script>
                 document.write(Templates.template_header());
                 document.write(Templates.template_sidebar());
@@ -20,7 +33,6 @@
         <script>
             document.write(Templates.template_footer());
         </script>
-
     </body>
 
 </html>
