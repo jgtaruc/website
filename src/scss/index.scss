@@ -1,3 +1,10 @@
+$theme-color: #222222;
+$color-on-background: rgba(255, 255, 255, 0.85);
+
+body {
+    background-color: $theme-color;
+}
+
 .jg-hero-bg {
     overflow: hidden;
     z-index: -1;
@@ -7,23 +14,44 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    opacity: 0;
+    transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-    div {
+    .jg-hero-img {
         position: absolute;
         width: 120%;
         height: 105%;
         display: block;
-        background: url("assets/hero-img.jpg") 0 0/cover no-repeat #1f2527;
-        background-color: #1f2527;
-        background-position: bottom;
+        background: url(../assets/hero-img.jpg) 0 0/cover no-repeat #222222;
+        background-color: #222222;
+        background-position: center;
         transition: 6.5s transform cubic-bezier(0.075, 0.82, 0.165, 1);
     }
 
-    main {
-        width: 300px;
-        height: 200px;
-        background-color: rgba(255, 255, 255, 0.5);
-        z-index: 5;
+    .jg-cta {
+        padding: 32px;
+        color: $color-on-background;
+        z-index: 1;
+     
+        h4, h1, h5 {
+            line-height: 1.25;
+        }
+
+        h4 {
+            font-size: 1.4rem;
+            font-weight: 300;
+        }
+
+        h1 {
+            font-size: 3rem;
+            font-weight: 400;
+        }
+
+        h5 {
+            font-size: 0.9rem;
+            font-weight: 400;
+            text-align: right;
+        }
     }
 }
 
@@ -46,12 +74,8 @@
         justify-content: center;
         font-size: 2rem;
         font-weight: 300;
-        color: #102233;
+        color: $color-on-background;
     }
-}
-
-.jg-info:nth-child(odd) {
-    background-color: rgba(26, 34, 52, 0.02);
 }
 
 #about {

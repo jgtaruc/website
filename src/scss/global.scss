@@ -1,5 +1,5 @@
-$theme-color: #1f2527;
-$color-on-background: rgba(255, 255, 255, 0.85);
+$theme-color: #222222;
+$color-on-background: rgba(255, 255, 255, 0.8);
 
 html {
     font-family: 'Roboto', sans-serif;
@@ -12,8 +12,9 @@ html {
 
 // header 
 #jg-header {
-    position: relative;
+    position: fixed;
     z-index: 1;
+    transition: 0.25s ease;
     .jg-header--left {
         .jg-grid-item {
             max-width: 10rem;
@@ -41,17 +42,16 @@ html {
         }
     }
 
-    #menu-icon {
-        max-width: 60px;
-        align-items: center;
-        justify-content: center;
-        transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);        
-
-        svg {
-            width: 32px;
-            height: 32px;
-            fill: $color-on-background;
-        }
+    &:before {
+        margin-top: -25px;
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 25px;   
+        box-shadow: 0 0 80px 20px #222222;
+        z-index: -1;
     }
 
     //testing
@@ -78,6 +78,22 @@ html {
     transform: translateX(70vw);
     transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
+
+    #menu-icon {
+        width: 50px;
+        height: 50px;
+        display: flex;      
+        align-items: center;
+        justify-content: center;
+        transform: translateX(-50px);
+
+        svg {
+            width: 32px;
+            height: 32px;
+            fill: $color-on-background;
+        }
+    }
+
     a {
         margin: 16px 0;
         padding: 16px;
@@ -94,16 +110,6 @@ html {
     background-color: rgba(0, 0, 0, 0.7);
     z-index: 4;
     display: none;
-}
-
-#jg-sidebar-checkbox:checked ~ #jg-header #menu-icon {
-    position: relative;
-    transform: translateX(-70vw);
-    z-index: 5;
-
-    svg {
-        fill: white;        
-    }
 }
 
 #jg-sidebar-checkbox:checked ~ #jg-sidebar {
@@ -155,11 +161,13 @@ html {
                 justify-content: center;
             }
         }
-
-        #menu-icon {
-            display: none;
-        }
     }
+
+    #jg-sidebar,
+    #jg-sidebar-backdrop {
+        display: none !important;
+    }
+
 }
 
 
