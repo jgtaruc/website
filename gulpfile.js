@@ -15,13 +15,15 @@ var gulp = require('gulp'),
     gulp_declare = require('gulp-declare'),
     gulp_concat = require('gulp-concat'),
     gulp_sourcemaps = require('gulp-sourcemaps'),
-    gulp_cached = require('gulp-cached');
+    gulp_cached = require('gulp-cached'),
+    gulp_reload = require('gulp-livereload');
 
 // build html
 gulp.task('build_html', function () {
     gulp.src('./src/html/**/*.html')
         .pipe(gulp_cached('cached-html'))
-        .pipe(gulp.dest('./dist'));
+        .pipe(gulp.dest('./dist'))
+        .pipe(gulp_reload());
 });
 
 // build css from scss
@@ -36,7 +38,8 @@ gulp.task('build_scss', function(){
         }))
         .pipe(csso())
         .pipe(gulp_sourcemaps.write("."))
-        .pipe(gulp.dest('./dist/css'));
+        .pipe(gulp.dest('./dist/css'))
+        .pipe(gulp_reload());
 });
 
 // build js and babelify
@@ -51,7 +54,8 @@ gulp.task('build_js', function(){
         .pipe(gulp_sourcemaps.init())
         .pipe(js_uglify())
         .pipe(gulp_sourcemaps.write('.'))
-        .pipe(gulp.dest('./dist/js'));
+        .pipe(gulp.dest('./dist/js'))
+        .pipe(gulp_reload());
 });
 
 // build assets
@@ -76,7 +80,8 @@ gulp.task('build_templates', function() {
         .pipe(gulp_concat('templates.js'))
         .pipe(js_uglify())
         .pipe(gulp.dest('./dist/js/templates'))
-        .pipe(gulp_cached('cached-templates'));
+        .pipe(gulp_cached('cached-templates'))
+        .pipe(gulp_reload());
 });
     
 // import vendor libraries
@@ -96,6 +101,7 @@ gulp.task('import_vendors', function () {
 
 // watch files and run specified task
 gulp.task('watch', function () {
+    gulp_reload.listen();
     gulp.watch('./src/html/**/*.html', ['build_html']);
     gulp.watch('./src/scss/**/*.scss', ['build_scss']);
     gulp.watch('./src/js/**/*.js', ['build_js']);

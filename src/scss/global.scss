@@ -12,6 +12,8 @@ html {
 
 // header 
 #jg-header {
+    position: relative;
+    z-index: 1;
     .jg-header--left {
         .jg-grid-item {
             max-width: 10rem;
@@ -22,6 +24,21 @@ html {
 
     .jg-header--right {
         display: none;
+        max-width: 15rem;
+
+        .jg-grid-item {
+            font-family: sans-serif;
+            opacity: 1;
+            transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+        }        
+    }
+
+    a {
+        transition: color 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+        
+        &:hover {
+            color: white;
+        }
     }
 
     #menu-icon {
@@ -38,7 +55,6 @@ html {
     }
 
     //testing
-    background-color: $theme-color;
     color: $color-on-background;
     height: 50px;
     width: 100%;

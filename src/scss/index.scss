@@ -1,0 +1,95 @@
+.jg-hero-bg {
+    overflow: hidden;
+    z-index: -1;
+    transform: translateY(-80px);
+    width: 100%;
+    height: 95vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    div {
+        position: absolute;
+        width: 120%;
+        height: 120%;
+        display: block;
+        background: url(https://static.pexels.com/photos/7477/night-trees-stars.jpg) 0 0/cover no-repeat #1f2527;
+        background-color: #1f2527;
+        background-position: bottom;
+        transition: 6.5s transform cubic-bezier(0.075, 0.82, 0.165, 1);
+    }
+
+    main {
+        width: 300px;
+        height: 200px;
+        background-color: rgba(255, 255, 255, 0.5);
+        z-index: 5;
+    }
+}
+
+.jg-info {
+    padding: 32px 32px 64px 32px;
+
+    .jg-grid-layout {
+        margin: 0 auto;
+        width: 100%;
+        max-width: 800px;
+
+        .jg-grid-item {
+            min-width: 150px;
+        }
+    }
+
+    .jg-info--title {
+        height: 5rem;
+        align-items: center;
+        justify-content: center;
+        font-size: 2rem;
+        font-weight: 300;
+        color: #102233;
+    }
+}
+
+.jg-info:nth-child(odd) {
+    background-color: rgba(26, 34, 52, 0.02);
+}
+
+#about {
+    img {
+        margin: 0 auto 16px auto;
+        width: 150px;
+        height: 150px;
+        max-width: 150px;
+        max-height: 150px;
+        background-color: gray;
+        border-radius: 50%;
+    }
+
+    .bio {
+        margin: 0 8px;
+        height: 150px;
+        background-color: gray;
+    }
+}
+
+#projects {
+    .jg-grid-layout {
+        transition: transform 1s cubic-bezier(0.075, 0.82, 0.165, 1)
+    }
+
+    .project-item {
+        padding: 4px;
+        div {
+            width: 100%;
+            height: 100px;
+            background-color: gray;
+        }
+    }
+}
+
+#contact {
+    .contact-item {
+        height: 100px;
+        background-color: gray;
+    }
+}
