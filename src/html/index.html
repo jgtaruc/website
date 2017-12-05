@@ -31,8 +31,14 @@
             </script>
             
             <section class="jg-hero-bg">
-                <div></div>
-                <main></main>
+                <!-- check if hero-img has finished loading -->
+                <img class="hidden">
+                <div class="jg-hero-img"></div>
+                <div class="jg-cta">
+                    <h4>Hi, I'm</h4>
+                    <h1>Juan Gabriel Taruc</h1>
+                    <h5>Frontend Developer</h5>
+                </div>
             </section>
 
             <section id="about" class="jg-info">
@@ -77,7 +83,39 @@
         </script>
     </body>
     <script>
-        var el = document.querySelector(".jg-hero-bg div"),
+
+        // header animation
+        var prevscrollY = 0,
+            header = document.querySelector("#jg-header");
+
+        window.addEventListener("scroll", function(evt){
+            var scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop,
+                screenscroll = scrollY - prevscrollY,
+                offsetY;
+
+            if(screenscroll >= 0) {
+                offsetY = -55; 
+                if(offsetY < -55) {
+                    offsetY = -55;
+                }
+            } else {
+                offsetY = 0;
+            }
+            
+            if(scrollY !== 0) {
+                header.style.backgroundColor = "#1d1d1d";
+            } else {
+                header.style.backgroundColor = "transparent";
+            }
+
+            header.style.transform = "translateY(" + offsetY + "px)";
+
+            prevscrollY = scrollY;
+        });
+
+        // mouse parallax
+        var hero_bg = document.querySelector(".jg-hero-bg"),
+            el = hero_bg.querySelector(".jg-hero-img"),
             prevEvt;
             
         document.querySelector(".jg-hero-bg").addEventListener("mousemove", function(evt){
@@ -86,9 +124,9 @@
                 return;
             }
 
-            var movementX = evt.screenX - prevEvt.screenX;
-            var movementY = evt.screenY - prevEvt.screenY;
-            var x = y = 0;
+            var movementX = evt.screenX - prevEvt.screenX,
+                movementY = evt.screenY - prevEvt.screenY,
+                x = y = 0;
             
             if(movementX < 0) { x = "20px" }
             else if(movementX > 0) { x = "-20px" }
@@ -103,6 +141,17 @@
         document.querySelector(".jg-hero-bg").addEventListener("mouseleave", function(evt){
             el.style.transform = "translate(0, 0)";
         })
+
+        // main box
+        var img = hero_bg.querySelector("img"),
+            hero_bg_main = hero_bg.querySelector(".jg-cta");
+        img.setAttribute("src", "assets/hero-img.jpg");
+        img.addEventListener("load", function(){
+            this.parentNode.style.opacity = "1";
+            this.parentNode.removeChild(this);
+
+            // setTimeout(function(){hero_bg_main.classList.add("hero-bg-main")}, 150);
+        });
     </script>
 
 </html>
