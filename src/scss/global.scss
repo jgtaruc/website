@@ -42,6 +42,20 @@ html {
         }
     }
 
+    #menu-icon {
+        width: 50px;
+        height: 50px;
+        display: flex;      
+        align-items: center;
+        justify-content: center;
+
+        svg {
+            width: 32px;
+            height: 32px;
+            fill: $color-on-background;
+        }
+    }
+
     &:before {
         margin-top: -25px;
         content: '';
@@ -50,7 +64,7 @@ html {
         left: 0;
         width: 100%;
         height: 25px;   
-        box-shadow: 0 0 80px 20px #222222;
+        box-shadow: 0 0 80px 50px #222222;
         z-index: -1;
     }
 
@@ -78,26 +92,27 @@ html {
     transform: translateX(70vw);
     transition: transform 0.5s cubic-bezier(0.075, 0.82, 0.165, 1);
 
-
-    #menu-icon {
-        width: 50px;
-        height: 50px;
-        display: flex;      
-        align-items: center;
-        justify-content: center;
-        transform: translateX(-50px);
+    label[for="jg-sidebar-checkbox"] {
+        margin: 8px 16px;
+        padding: 8px;
+        width: 38px;
+        height: 38px;
+        display: flex;
+        transform: rotate(-90deg);
+        border: 1px solid $theme-color;
+        border-radius: 3px;
 
         svg {
-            width: 32px;
-            height: 32px;
-            fill: $color-on-background;
+            fill: $theme-color;
+            width: 100%;
+            height: 100%;
         }
     }
 
     a {
-        margin: 16px 0;
-        padding: 16px;
-        font-size: 1.25rem;
+        margin: 4px 0;
+        padding: 4px 16px;
+        font-size: 1.15rem;
     }
 }
 
@@ -163,6 +178,7 @@ html {
         }
     }
 
+    #jg-header #menu-icon,
     #jg-sidebar,
     #jg-sidebar-backdrop {
         display: none !important;
