@@ -144,10 +144,22 @@ html {
         margin: 0 auto;
         width: 100%;
         max-width: 650px;
+        align-items: flex-end;
+        justify-content: space-around;
 
         .jg-grid-item {
+            height: 1.5rem;
+            flex-grow: 0;
             align-items: center;
             justify-content: center;
+
+            font-family: sans-serif;
+            opacity: 1;
+            transition: 0.25s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            &:hover {
+                color: white;
+            }
         }
 
         small.jg-grid-item {
@@ -169,7 +181,7 @@ html {
 
         background-color: transparent;
         border: 1px solid $color-on-background;
-        border-radius: 2px;
+        border-radius: 1px;
         transition: 0.2s ease;
 
         svg {

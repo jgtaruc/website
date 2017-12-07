@@ -91,7 +91,7 @@ body {
     }
 
     .bio {
-        margin: 0 8px;
+        margin: 0 12px;
         min-height: 150px;
 
         p {
@@ -224,6 +224,20 @@ body {
                 }
             }
         }
+    }
+}
+
+.get-resume {
+    margin: 16px 0 0 auto;
+    padding: 8px;
+    border: 1px solid $color-on-background;
+    border-radius: 1px;
+    font-size: 0.75rem;
+    transition: 0.2s ease;
+
+    &:hover {
+        color: $theme-color;
+        background-color: $color-on-background;
     }
 }
 
