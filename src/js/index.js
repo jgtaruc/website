@@ -6,19 +6,19 @@
     window.addEventListener("scroll", function(evt){
         var scrollY = window.scrollY || window.pageYOffset || document.documentElement.scrollTop,
             screenscroll = scrollY - prevscrollY,
-            offsetY;
+            offsetY, headerHeight = header.clientHeight;
 
         if(screenscroll >= 0) {
-            offsetY = -55; 
-            if(offsetY < -55) {
-                offsetY = -55;
+            offsetY = -headerHeight; 
+            if(offsetY < -headerHeight) {
+                offsetY = -headerHeight;
             }
         } else {
             offsetY = 0;
         }
 
         if(scrollY !== 0) {
-            header.style.backgroundColor = "#1d1d1d";
+            header.style.backgroundColor = "#222";
         } else {
             header.style.backgroundColor = "transparent";
         }
@@ -62,7 +62,42 @@
     hero_bg_main = hero_bg.querySelector(".jg-cta");
     img.setAttribute("src", "assets/hero-img.jpg");
     img.addEventListener("load", function(){
-        this.parentNode.style.opacity = "1";
+        this.nextElementSibling.style.opacity = "1";
         this.parentNode.removeChild(this);
     });
+
+
+	function ScrollUp(el) {
+		var scrollUpBtn = el,
+			elHeight    = window.clientHeight,
+			scrollPCT   = elHeight * 0.05,
+			threshold   = elHeight * 0.3;
+
+		window.addEventListener("scroll", ScrollCheck);
+		window.addEventListener("resize", ScrollCheck);
+		scrollUpBtn.addEventListener("click", ScrollToTop);
+
+		if(el === document.body) {
+			threshold = window.innerHeight;
+		}
+
+		function ScrollCheck() {
+			y = window.scrollY || window.pageYOffset || document.documentElement.scrollTop;
+			if(y >= threshold) {
+				return true;
+			} else {
+				return false;
+			}
+		}
+		window["ScrollCheck"] = ScrollCheck;
+
+		function ScrollToTop() {
+			if (document.body.scrollTop !== 0 || document.documentElement.scrollTop !== 0) {
+				window.scrollBy(0, -(document.body.clientHeight*0.05));
+				requestAnimationFrame(ScrollToTop);
+			}
+		}
+    }
+    
+    ScrollUp(document.querySelector("#jg-scroll-up-btn"));
 })();

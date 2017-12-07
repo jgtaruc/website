@@ -21,6 +21,7 @@
         <script>
             document.write(Templates.template_svg({
                 svg_arrow_down: true,
+                svg_envelope: true,
                 svg_menu: true
             }));
         </script>
@@ -46,7 +47,25 @@
                 <h1 class="jg-grid-item jg-grid-1/1 jg-info--title">About</h1>
                 <div class="jg-grid-layout">
                     <img src="https://upload.wikimedia.org/wikipedia/commons/7/7c/Profile_avatar_placeholder_large.png" class="jg-grid-item jg-grid-1/3">
-                    <div class="bio jg-grid-item jg-grid-2/3"></div>
+                    <div class="bio jg-grid-item jg-grid-2/3">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam tortor ligula, vehicula vel turpis ac, convallis iaculis urna. Nulla facilisi. Sed fringilla lacinia elit, ut semper nunc consectetur eget. Vivamus in nisl nec lorem ornare sollicitudin non at sapien. Nullam a eleifend neque. Quisque sed fermentum tortor. Donec pretium bibendum nulla ac iaculis. Etiam nec ullamcorper lectus. Morbi lectus mi, varius vitae urna et, fermentum pulvinar massa. Praesent efficitur leo sit amet sapien fermentum porta. Suspendisse pulvinar lectus vel ligula porttitor, eget eleifend nunc convallis. Nulla viverra at lectus a tempus. Ut velit augue, vulputate id est non, vestibulum lobortis neque. Aenean aliquam quam sem, et euismod odio aliquam sed.</p>
+                    </div>
+
+                    <div class="work">
+                        <h4>Work</h4>
+                        <div class="table jg-grid-layout">
+                            <div class="jg-grid-item jg-grid-1/1 jg-grid-layout row">
+                                <label class="jg-grid-item jg-grid-2/5 column"><a href="https://greatercommons.com" target="_blank">Greater Commons</a></label>
+                                <p class="jg-grid-item jg-grid-2/5 column">Frontend Developer/Founder</p>
+                                <p class="jg-grid-item jg-grid-1/5 column">May 2016 - Current</p>
+                            </div>
+                            <div class="jg-grid-item jg-grid-1/1 jg-grid-layout row">
+                                <label class="jg-grid-item jg-grid-2/5 column">Golden Valley Unified School District</label>
+                                <p class="jg-grid-item jg-grid-2/5 column">Technology Technician Intern</p>
+                                <p class="jg-grid-item jg-grid-1/5 column">June 2015 - July 2015</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </section>
 
@@ -54,19 +73,29 @@
                 <h1 class="jg-grid-item jg-grid-1/1 jg-info--title">Projects</h1>
                 <div class="jg-grid-layout">
                     <div class="jg-grid-item jg-grid-1/2 project-item">
-                        <div></div>
+                        <div>
+                            <a href="https://greatercommons.com/" target="_blank">Greater Commons</a>
+                        </div>
                     </div>
                     <div class="jg-grid-item jg-grid-1/2 project-item">
-                        <div></div>
+                        <div>
+                            <a href="/" target="_blank">8 Tile Puzzle Solver</a>                                
+                        </div>
                     </div>
                     <div class="jg-grid-item jg-grid-1/3 project-item">
-                        <div></div>
+                        <div>
+                            <a href="http://todolist-1292.appspot.com/" target="_blank">To do list</a>                                
+                        </div>
                     </div>
                     <div class="jg-grid-item jg-grid-1/3 project-item">
-                        <div></div>
+                        <div>
+                            <a href="https://cdn.rawgit.com/aacunningham/Farfalle-Scuba-Project/89978217/Farfalle%20Dive%20Planner/main.html" target="_blank">Dive Planner</a>                                
+                        </div>
                     </div>
                     <div class="jg-grid-item jg-grid-1/3 project-item">
-                        <div></div>
+                        <div>
+                            <a href="https://github.com/jgtaruc" target="_blank">See more at GitHub</a>
+                        </div>
                     </div>
                 </div>
             </section>
@@ -74,7 +103,12 @@
             <section id="contact" class="jg-grid-layout jg-info">
                 <h1 class="jg-grid-item jg-grid-1/1 jg-info--title">Contact</h1>                    
                 <div class="jg-grid-layout">
-                    <div class="jg-grid-item jg-grid-1/1 contact-item"></div>
+                    <div class="jg-grid-item jg-grid-1/1 contact-item">
+                        <a href="mailto:jgtaruc@gmail.com">
+                            <svg><use xlink:href="#svg_envelope"></use></svg>
+                            jgtaruc@gmail.com
+                        </a>
+                    </div>
                 </div>
             </section>
         </main>

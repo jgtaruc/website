@@ -10,12 +10,10 @@ body {
     z-index: -1;
     transform: translateY(-80px);
     width: 100%;
-    height: 97vh;
+    height: 100vh;
     display: flex;
     align-items: center;
     justify-content: center;
-    opacity: 0;
-    transition: opacity 2s cubic-bezier(0.075, 0.82, 0.165, 1);
 
     .jg-hero-img {
         position: absolute;
@@ -25,7 +23,8 @@ body {
         background: url(../assets/hero-img.jpg) 0 0/cover no-repeat #222222;
         background-color: #222222;
         background-position: center;
-        transition: 6s transform cubic-bezier(0.075, 0.82, 0.165, 1);
+        opacity: 0;
+        transition: 6s cubic-bezier(0.075, 0.82, 0.165, 1);
     }
 
     .jg-cta {
@@ -43,7 +42,7 @@ body {
         }
         
         h1 {
-            font-size: 3rem;
+            font-size: 2.5rem;
             font-weight: 400;
             text-align: center;
         }
@@ -58,6 +57,7 @@ body {
 
 .jg-info {
     padding: 32px 32px 64px 32px;
+    color: $color-on-background;
 
     .jg-grid-layout {
         margin: 0 auto;
@@ -65,7 +65,7 @@ body {
         max-width: 800px;
 
         .jg-grid-item {
-            min-width: 150px;
+            min-width: 200px;
         }
     }
 
@@ -74,7 +74,7 @@ body {
         align-items: center;
         justify-content: center;
         font-size: 2rem;
-        font-weight: 300;
+        font-weight: 400;
         color: $color-on-background;
     }
 }
@@ -82,8 +82,8 @@ body {
 #about {
     img {
         margin: 0 auto 16px auto;
-        width: 150px;
-        height: 150px;
+        min-width: 150px;
+        min-height: 150px;
         max-width: 150px;
         max-height: 150px;
         background-color: gray;
@@ -92,8 +92,48 @@ body {
 
     .bio {
         margin: 0 8px;
-        height: 150px;
-        background-color: gray;
+        min-height: 150px;
+
+        p {
+            line-height: 1.2;
+            letter-spacing: 1px;
+        }
+    }
+
+    .work {
+        margin-top: 64px;
+        overflow: auto;
+
+        h4 {
+            font-size: 1.5rem;
+            font-weight: 300;
+            line-height: 1.5;
+        }
+
+        .table {
+            overflow: auto;
+            
+            .row {
+                width: 100%;
+                flex-wrap: nowrap;
+            }
+
+            .column {
+                padding: 16px;
+                display: flex;
+                align-items: center;
+                border-top: 1px solid $color-on-background;
+                border-left: 1px solid $color-on-background;
+            }
+
+            .column:last-child {
+                border-right: 1px solid $color-on-background;
+            }
+            
+            .row:last-child .column {
+                border-bottom: 1px solid $color-on-background;
+            }
+        }
     }
 }
 
@@ -104,17 +144,95 @@ body {
 
     .project-item {
         padding: 4px;
+
         div {
             width: 100%;
             height: 100px;
-            background-color: gray;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            align-content: stretch;
+            border-radius: 1px;
+            transform: translateY(0);
+            will-change: transform;
+            transition: transform 0.25s ease;
+            cursor: pointer;
+
+            a {
+                width: 100%;
+                height: 100%;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 1.115rem;
+            }
+
+            &:hover {
+                transform: translateY(-10px);
+            }
+        }
+
+        &:first-child div {
+            background-color: #39bee0;
+        }
+
+        &:nth-child(2) div {
+            background-color: #54cb78;
+        }
+
+        &:nth-child(3) div {
+            background-color: #e9c255;
+        }
+
+        &:nth-child(4) div {
+            background-color: #e87952;
+        }
+
+        &:last-child div {
+            background-color: #656565;
         }
     }
 }
 
 #contact {
     .contact-item {
-        height: 100px;
-        background-color: gray;
+        min-height: 100px;
+        font-size: 1.15rem;
+
+        a {
+            margin: 0 auto;
+            display: flex;
+            align-self: flex-start;
+            font-size: 1.25rem;
+            font-weight: 400;
+            letter-spacing: 1px;
+            transition: color 0.2s ease;
+
+            svg {
+                margin: -4px 8px 0 8px;
+                width: 2rem;
+                height: 2rem;
+                fill: $color-on-background;
+                transition: 0.2s ease;
+            }
+
+            &:hover {
+                color: white;
+
+                svg {
+                    fill: white;
+                }
+            }
+        }
+    }
+}
+
+@media (min-width: 551px) {
+    .jg-hero-bg {
+        .jg-cta {
+            h1 {
+                font-size: 3rem;
+            }
+        }
     }
 }
