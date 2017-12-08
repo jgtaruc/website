@@ -1,0 +1,33 @@
+.jg-main {
+    display: flex;
+
+    #puzzle {
+        margin: auto;
+        width: 50vw;
+        height: 50vw;
+
+        .puzzle-tile {
+            padding: 1px;
+            transform: translateX(0);
+            transition: transform 1s ease;
+            will-change: transform;
+            div {
+                width: 100%;
+                height: 100%;
+                background-color: gray;
+                border-radius: 1px;
+            }
+            &#tile0 {
+                div {
+                    background-color: black;
+                }
+            }
+
+            &#tile1  {
+                div {
+                    background-color: red;
+                }
+            }
+        }
+    }
+}

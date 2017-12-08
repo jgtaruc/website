@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Eight Puzzle Solver</title>
+        <script src="js/vendors/handlebars.runtime.min.js"></script>        
+        <script src="js/vendors/babel-polyfill.min.js"></script>        
+        <script src="js/templates/templates.js"></script>
+        
+        
+        <script>
+            document.write(Templates.template_meta());
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/global.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,600">
+        
+        <!-- <link rel="stylesheet" type="text/css" href="css/index.css"> -->
+        <link rel="stylesheet" type="text/css" href="css/eight_puzzle_solver.css">
+    </head>
+
+    <body>
+        <script>
+            document.write(Templates.template_svg({
+                svg_arrow_down: true,
+                svg_menu: true
+            }));
+        </script>
+
+        <main class="jg-main">
+            <script>
+                document.write(Templates.template_header());
+                document.write(Templates.template_sidebar());
+            </script>
+            
+            <div id="puzzle" class="jg-grid-layout">
+                <div id="tile1" class="puzzle-tile jg-grid-item jg-grid-1/3"><div></div></div>
+                <div id="tile0" class="puzzle-tile jg-grid-item jg-grid-1/3"><div></div></div>
+                <div id="tile2" class="puzzle-tile jg-grid-item jg-grid-1/3"><div></div></div>
+                <div id="tile3" class="puzzle-tile jg-grid-item jg-grid-1/3"><div></div></div>
+                <div id="tile4" class="puzzle-tile jg-grid-item jg-grid-1/3"><div></div></div>
+                <div id="tile5" class="puzzle-tile jg-grid-item jg-grid-1/3"><div></div></div>
+                <div id="tile6" class="puzzle-tile jg-grid-item jg-grid-1/3"><div></div></div>
+                <div id="tile7" class="puzzle-tile jg-grid-item jg-grid-1/3"><div></div></div>
+                <div id="tile8" class="puzzle-tile jg-grid-item jg-grid-1/3"><div></div></div>
+            </div>
+
+            <form id="puzzle-form">
+                <select>
+                    <option></option>
+                </select>
+            </form>
+            
+        </main>
+
+        <script>
+            document.write(Templates.template_footer());
+        </script>
+        <script src="js/eight_puzzle_solver.js"></script>
+    </body>
+</html>

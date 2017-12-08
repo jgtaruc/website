@@ -76,13 +76,13 @@ func Eight_Puzzle_Solver(w http.ResponseWriter, r *http.Request, _ httprouter.Pa
 		Moves string 		`json:"moves"`
 		Cost int 			`json:"cost"`
 		Expanded int 		`json:"expanded"`
-		Time time.Duration 	`json:"time"`
+		Time float64	 	`json:"time"`
 	}
 	
 	s.Moves = moves
 	s.Cost = cost
 	s.Expanded = expanded
-	s.Time = tm
+	s.Time = tm.Seconds()
 
 	bs, err := json.Marshal(s)
     if err != nil {
