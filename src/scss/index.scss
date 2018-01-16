@@ -95,6 +95,8 @@ body {
         min-height: 150px;
 
         p {
+            display: flex;
+            align-items: center;
             line-height: 1.2;
             letter-spacing: 1px;
             font-family: sans-serif;
