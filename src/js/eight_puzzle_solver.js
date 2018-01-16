@@ -45,7 +45,7 @@ Puzzle.prototype.getSolution = async function(form) {
             body: JSON.stringify({"Algorithm": parseInt(form["algorithm"].value), "State": this.state}),
             mode: "cors"
         };
-        var response = await fetch("http://localhost:8080/api/eight_puzzle_solver", req);
+        var response = await fetch("https://jgprojects-1281.appspot.com/api/eight_puzzle_solver", req);
         return await response.json();
     } catch(e) {
         console.warn(e);
@@ -138,7 +138,7 @@ Puzzle.prototype.generateRandom = async function() {
 
     //TODO: check if solvable
     try {
-        var response = await fetch("http://localhost:8080/api/eight_puzzle_solver/generate_random", {method: "GET"});
+        var response = await fetch("https://jgprojects-1281.appspot.com/api/eight_puzzle_solver/generate_random", {method: "GET"});
         var array = await response.json();
     } catch(e) {
         console.warn(e);
