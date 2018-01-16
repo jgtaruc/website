@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Eight Puzzle Solver</title>
+        <script src="js/vendors/handlebars.runtime.min.js"></script>        
+        <script src="js/vendors/babel-polyfill.min.js"></script>        
+        <script src="js/templates/templates.js"></script>
+        
+        
+        <script>
+            document.write(Templates.template_meta());
+        </script>
+
+        <link rel="stylesheet" type="text/css" href="css/reset.css">
+        <link rel="stylesheet" type="text/css" href="css/global.css">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:100,300,400,600">
+        
+        <link rel="stylesheet" type="text/css" href="css/index.css">
+        <link rel="stylesheet" type="text/css" href="css/eight_puzzle_solver.css">
+    </head>
+
+    <body>
+        <script>
+            document.write(Templates.template_svg({
+                svg_arrow_down: true,
+                svg_menu: true
+            }));
+        </script>
+
+        <main class="jg-main">
+            <script>
+                document.write(Templates.template_header());
+                document.write(Templates.template_sidebar());
+            </script>
+            
+            <section id="puzzle-container">
+                <div id="puzzle" class="jg-grid-layout">
+                    <div id="tile3" data-value="3" class="puzzle-tile jg-grid-item jg-grid-1/3"><div>3</div></div>
+                    <div id="tile8" data-value="8" class="puzzle-tile jg-grid-item jg-grid-1/3"><div>8</div></div>
+                    <div id="tile1" data-value="1" class="puzzle-tile jg-grid-item jg-grid-1/3"><div>1</div></div>
+                    <div id="tile4" data-value="4" class="puzzle-tile jg-grid-item jg-grid-1/3"><div>4</div></div>
+                    <div id="tile2" data-value="2" class="puzzle-tile jg-grid-item jg-grid-1/3"><div>2</div></div>
+                    <div id="tile6" data-value="6" class="puzzle-tile jg-grid-item jg-grid-1/3"><div>6</div></div>
+                    <div id="tile0" data-value="0" class="puzzle-tile jg-grid-item jg-grid-1/3"><div>0</div></div>
+                    <div id="tile5" data-value="5" class="puzzle-tile jg-grid-item jg-grid-1/3"><div>5</div></div>
+                    <div id="tile7" data-value="7" class="puzzle-tile jg-grid-item jg-grid-1/3"><div>7</div></div>
+                </div>
+
+                <form id="puzzle-form" class="jg-grid-layout">
+                    <select name="algorithm" class="jg-grid-item jg-grid-1/1">
+                        <option value="0">Breadth First Search</option>
+                        <option value="1">Greedy Best First Search w/ Manhattan Heuristic</option>
+                        <option value="2">Greedy Best First Search w/ Misplaced Tiles Heuristic</option>
+                        <option value="3" default selected>A* Search w/ Manhattan Heuristic</option>
+                        <option value="4">A* Search w/ Misplaced Tiles Heuristic</option>
+                        <!-- <option value="5">IDA* Search w/ Manhattan Heuristic</option> -->
+                        <!-- <option value="6">IDA* Search w/ Misplaced Tiles Heuristic</option> -->
+                    </select>
+                    <button id="generateRandom_btn" class="jg-grid-item jg-grid-1/3" type="button">Generate Random</button>
+                    <label id="solve_btn" class="jg-grid-item jg-grid-1/3">
+                        <input type="submit">
+                        Solve!
+                    </label>
+                </form>
+            </section>
+            
+        </main>
+
+        <div id="solutionLoader" class="hidden">
+            <h4>Getting solution...</h4>
+        </div>
+        <script>
+            document.write(Templates.template_footer());
+        </script>
+        <script src="js/index.js"></script>
+        <script src="js/eight_puzzle_solver.js"></script>
+    </body>
+</html>

@@ -1,0 +1,98 @@
+.jg-main {
+    display: flex;
+
+    #puzzle-container {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 100%;
+
+        #puzzle {
+            width: 50vw;
+            max-width: 350px;
+            height: 50vw;
+            max-height: 350px;
+
+            .puzzle-tile {
+                position: relative;
+                padding: 1px;
+                z-index: 2;
+                transition: all 1s ease;
+                div {
+                    width: 100%;
+                    height: 100%;
+                    background-color: #71a7ee;
+                    border-radius: 8px;
+                    color: white;
+                    font-size: 28px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                }
+                &#tile0 {
+                    z-index: 1;
+                    div {
+                        background-color: #bdbdbd;
+                    }
+                }
+            }
+        }
+
+        #puzzle-form {
+            margin-top: 16px;
+
+            select {
+                margin-bottom: 8px;
+                padding: 8px;
+                width: 100px;
+                cursor: pointer;
+            }
+
+            #generateRandom_btn, #solve_btn {
+                margin: 0 2px;
+                padding: 4px; 
+                width: 100px; 
+                height: 2rem;
+                border-radius: 2px; 
+                font-size: 0.8rem; 
+                justify-content: center;
+                align-items: center;
+                background-color: #77a1ee; 
+                color: white;
+                box-shadow: 0 0 0 0 rgba(0,0,0,.2), 0 0 0 0 rgba(0,0,0,.14), 0 0 0 0 rgba(0,0,0,.12);
+                cursor: pointer;
+                transition: 0.2s ease;
+
+                input {
+                    opacity: 0;
+                    width: 0;
+                    height: 0;
+                }
+
+                &:hover {
+                    box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
+                }
+            }
+        }
+    }
+}
+
+#solutionLoader {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    z-index: 99;
+    background-color: rgba(255,255,255,0.8);
+
+    h4 {
+        font-weight: 400;
+        font-size: 1.25rem;
+        color: rgba(0,0,0,0.8)
+    }
+}
