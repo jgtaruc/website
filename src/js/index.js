@@ -29,42 +29,44 @@
     });
 
     // mouse parallax
-    var hero_bg = document.querySelector(".jg-hero-bg"),
-    el = hero_bg.querySelector(".jg-hero-img"),
-    prevEvt;
+    var hero_bg = document.querySelector(".jg-hero-bg");
+    if(hero_bg) {
+        var el = hero_bg.querySelector(".jg-hero-img"),
+                prevEvt;
 
-    document.querySelector(".jg-hero-bg").addEventListener("mousemove", function(evt){
-        if(typeof prevEvt === "undefined") {
+        document.querySelector(".jg-hero-bg").addEventListener("mousemove", function(evt){
+            if(typeof prevEvt === "undefined") {
+                prevEvt = evt;
+                return;
+            }
+
+            var movementX = evt.screenX - prevEvt.screenX,
+                movementY = evt.screenY - prevEvt.screenY,
+                x = y = 0;
+
+            if(movementX < 0) { x = "20px" }
+            else if(movementX > 0) { x = "-20px" }
+
+            if(movementY < 0) { y = "20px" }
+            else if(movementY > 0) { y = "-20px" }
+
+            el.style.transform = "translate(" + x + "," + y  + ")";
             prevEvt = evt;
-            return;
-        }
+        });
 
-        var movementX = evt.screenX - prevEvt.screenX,
-            movementY = evt.screenY - prevEvt.screenY,
-            x = y = 0;
+        document.querySelector(".jg-hero-bg").addEventListener("mouseleave", function(evt){
+            el.style.transform = "translate(0, 0)";
+        })
 
-        if(movementX < 0) { x = "20px" }
-        else if(movementX > 0) { x = "-20px" }
-
-        if(movementY < 0) { y = "20px" }
-        else if(movementY > 0) { y = "-20px" }
-
-        el.style.transform = "translate(" + x + "," + y  + ")";
-        prevEvt = evt;
-    });
-
-    document.querySelector(".jg-hero-bg").addEventListener("mouseleave", function(evt){
-        el.style.transform = "translate(0, 0)";
-    })
-
-    // main box
-    var img = hero_bg.querySelector("img"),
-    hero_bg_main = hero_bg.querySelector(".jg-cta");
-    img.setAttribute("src", "assets/hero-img.jpg");
-    img.addEventListener("load", function(){
-        this.nextElementSibling.style.opacity = "1";
-        this.parentNode.removeChild(this);
-    });
+        // main box
+        var img = hero_bg.querySelector("img"),
+        hero_bg_main = hero_bg.querySelector(".jg-cta");
+        img.setAttribute("src", "assets/hero-img.jpg");
+        img.addEventListener("load", function(){
+            this.nextElementSibling.style.opacity = "1";
+            this.parentNode.removeChild(this);
+        });
+    }
 
 
 	function ScrollUp(el) {

@@ -16,6 +16,7 @@ func init() {
 	r := httprouter.New()
 
 	r.POST("/api/eight_puzzle_solver", Eight_Puzzle_Solver)
+	r.GET("/api/eight_puzzle_solver/generate_random", Eight_Puzzle_Solver_GEN_Random)
 
 	http.Handle("/", r)
 	
@@ -25,6 +26,9 @@ func init() {
 
 func Eight_Puzzle_Solver(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
 	// log.Println("started")	
+	w.Header().Set("Access-Control-Allow-Origin", "*")
+	w.Header().Set("Content-Type", "text/html; charset=utf-8")
+
 	body, err := ioutil.ReadAll(r.Body)
     if err != nil {
         panic(err)
@@ -90,6 +94,20 @@ func Eight_Puzzle_Solver(w http.ResponseWriter, r *http.Request, _ httprouter.Pa
 		return
 	}
 
+	io.WriteString(w, string(bs))
+	// log.Println("done")	
+}
+
+func Eight_Puzzle_Solver_GEN_Random(w http.ResponseWriter, r *http.Request, _ httprouter.Params) {
+	// log.Println("started")	
+	s := eight_puzzle_solver.RandomPuzzle()
+	bs, err := json.Marshal(s)
+    if err != nil {
+		http.Error(w, err.Error(), http.StatusInternalServerError)		
+		return
+	}
+
+	w.Header().Set("Access-Control-Allow-Origin", "*")
 	io.WriteString(w, string(bs))
 	// log.Println("done")	
 }
