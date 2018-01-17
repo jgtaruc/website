@@ -28,6 +28,14 @@
         prevscrollY = scrollY;
     });
 
+    //sidebar js
+    var sidebar_links = document.querySelectorAll(".sidebar-item");
+    for(var i=0; i<sidebar_links.length; i++) {
+        sidebar_links[i].addEventListener("click", function(evt){
+            document.querySelector("#jg-sidebar-checkbox").checked = false;
+        });
+    }
+
     // mouse parallax
     var hero_bg = document.querySelector(".jg-hero-bg");
     if(hero_bg) {
@@ -67,7 +75,6 @@
             this.parentNode.removeChild(this);
         });
     }
-
 
 	function ScrollUp(el) {
 		var scrollUpBtn = el,
