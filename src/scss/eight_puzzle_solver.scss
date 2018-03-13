@@ -8,11 +8,45 @@
         justify-content: center;
         width: 100%;
 
+        #puzzle-intro {
+            margin: 32px auto;
+            width: 90%;
+            max-width: 500px;
+            color: rgba(255,255,255,0.8);
+            
+
+            h1 {
+                line-height: 2;
+                text-align: center;
+            }
+
+            p {
+                line-height: 1.25;
+
+                label {
+                    margin: 16px;
+                    display: block;
+                    text-align: center;
+                    font-size: 1.5rem;
+                    line-height: 1.25;
+                }
+            }
+
+            ul {
+                margin-left: 32px;
+                li {
+                    list-style: square;
+                    line-height: 1.25;
+                }
+            }
+        }
+
         #puzzle {
             width: 50vw;
             max-width: 350px;
             height: 50vw;
             max-height: 350px;
+            background-color: #bdbdbd;
 
             .puzzle-tile {
                 position: relative;
@@ -33,7 +67,8 @@
                 &#tile0 {
                     z-index: 1;
                     div {
-                        background-color: #bdbdbd;
+                        opacity: 0;
+                        // background-color: #bdbdbd;
                     }
                 }
             }
@@ -49,8 +84,8 @@
                 cursor: pointer;
             }
 
-            #generateRandom_btn, #solve_btn {
-                margin: 0 2px;
+            #generateRandom_btn, #solve_btn, #reset_btn {
+                margin: 2px;
                 padding: 4px; 
                 width: 100px; 
                 height: 2rem;
@@ -73,6 +108,17 @@
                 &:hover {
                     box-shadow: 0 2px 4px -1px rgba(0,0,0,.2), 0 4px 5px 0 rgba(0,0,0,.14), 0 1px 10px 0 rgba(0,0,0,.12);
                 }
+            }
+        }
+
+        #results {
+            margin: 32px auto;
+            width: 100%;
+            max-width: 500px;
+            color: rgba(255,255,255,.8);
+
+            p {
+                line-height: 1.25;
             }
         }
     }

@@ -6,9 +6,11 @@ function Puzzle(el) {
 
     this.movementX = this.puzzleWidth/3 + "px";
     this.movementY = this.puzzleHeight/3 + "px";
+    this.solving = false;
 }
 
 Puzzle.prototype.solve = async function(form) {
+    this.solving = true;
     this.blankTile = this.puzzle.querySelector("#tile0");
 
     var tiles = document.querySelectorAll(".puzzle-tile");
@@ -32,9 +34,13 @@ Puzzle.prototype.solve = async function(form) {
         alert("Puzzle already solved!");
         return;
     }
+    document.querySelector("#results .moves").innerHTML = "Moves: " + solution.join(", ");
+    document.querySelector("#results .states").innerHTML = "States: " + expanded;
+    document.querySelector("#results .time").innerHTML = "Time: " + time + "(seconds)";
     for(let i=0; i<solution.length; i++) {
         await this.moveTile(this.blankTile, solution[i]);
     }
+    this.solving = false;
 }
 
 Puzzle.prototype.getSolution = async function(form) {
@@ -140,10 +146,15 @@ Puzzle.prototype.generateRandom = async function() {
     try {
         var response = await fetch("https://jgprojects-1281.appspot.com/api/eight_puzzle_solver/generate_random", {method: "GET"});
         var array = await response.json();
+        window["generated_state_from_random"] = array;
     } catch(e) {
         console.warn(e);
         return;
     }
+    this.generatePuzzle(array);
+}
+
+Puzzle.prototype.generatePuzzle = async function(array) {
     this.puzzle.innerHTML = "";
     
     for(var i=0; i<array.length; i++) {
@@ -156,11 +167,32 @@ Puzzle.prototype.generateRandom = async function() {
 var p = new Puzzle(document.querySelector("#puzzle"));
 p.generateRandom();
 
+document.querySelector("#reset_btn").addEventListener("click", function(){
+    if(p.solving) {
+        return
+    }
+    document.querySelector("#results .moves").innerHTML = "";
+    document.querySelector("#results .states").innerHTML = "";
+    document.querySelector("#results .time").innerHTML = "";
+    p.generatePuzzle(window["generated_state_from_random"]);
+});
 document.querySelector("#generateRandom_btn").addEventListener("click", function(){
+    if(p.solving) {
+        return
+    }
+    document.querySelector("#results .moves").innerHTML = "";
+    document.querySelector("#results .states").innerHTML = "";
+    document.querySelector("#results .time").innerHTML = "";
     p.generateRandom();
 });
 document.querySelector("#puzzle-form").addEventListener("submit", function(evt){
     evt.preventDefault();
+    if(p.solving) {
+        return
+    }
+    document.querySelector("#results .moves").innerHTML = "";
+    document.querySelector("#results .states").innerHTML = "";
+    document.querySelector("#results .time").innerHTML = "";
     p.solve(evt.target);
 });
 })();
