@@ -31,11 +31,12 @@ Puzzle.prototype.solve = async function(form) {
 
     solution = solution.split("|");
     if(cost === 0) {
-        alert("Puzzle already solved!");
+        this.generatePuzzle(window["generated_state_from_random"]);
+        this.solve(form);
         return;
     }
     document.querySelector("#results .moves").innerHTML = "Moves: " + solution.join(", ");
-    document.querySelector("#results .states").innerHTML = "States: " + expanded;
+    document.querySelector("#results .num_moves").innerHTML = "Number of moves: " + solution.length;
     document.querySelector("#results .time").innerHTML = "Time: " + time + "(seconds)";
     for(let i=0; i<solution.length; i++) {
         await this.moveTile(this.blankTile, solution[i]);
@@ -172,7 +173,7 @@ document.querySelector("#reset_btn").addEventListener("click", function(){
         return
     }
     document.querySelector("#results .moves").innerHTML = "";
-    document.querySelector("#results .states").innerHTML = "";
+    document.querySelector("#results .num_moves").innerHTML = "";
     document.querySelector("#results .time").innerHTML = "";
     p.generatePuzzle(window["generated_state_from_random"]);
 });
@@ -181,7 +182,7 @@ document.querySelector("#generateRandom_btn").addEventListener("click", function
         return
     }
     document.querySelector("#results .moves").innerHTML = "";
-    document.querySelector("#results .states").innerHTML = "";
+    document.querySelector("#results .num_moves").innerHTML = "";
     document.querySelector("#results .time").innerHTML = "";
     p.generateRandom();
 });
@@ -191,7 +192,7 @@ document.querySelector("#puzzle-form").addEventListener("submit", function(evt){
         return
     }
     document.querySelector("#results .moves").innerHTML = "";
-    document.querySelector("#results .states").innerHTML = "";
+    document.querySelector("#results .num_moves").innerHTML = "";
     document.querySelector("#results .time").innerHTML = "";
     p.solve(evt.target);
 });
